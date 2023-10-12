@@ -1,0 +1,37 @@
+<!--Create a div with 2 sections header and body use card layout-->
+
+<div class="card">
+    <div class="card-header">
+        {{ pageTitle }}
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <!--Display product table only if there are products available-->
+
+            <table class="table" *ngIf="products && products.length > 0">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Code</th>
+                        <th>Available</th>
+                        <th>Price</th>
+                        <th>Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of products">
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.code | lowercase }}</td>
+                        <!--Display the date in mm-dd-yyyy format-->
+                        <td>{{ product.available | date:'shortDate' }}</td>
+                        
+                        <td>{{ product.price | currency:'USD':true:'1.2-2' }}</td>
+
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
